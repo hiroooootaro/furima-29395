@@ -11,9 +11,7 @@
 | Last_neme  | string  | null: false|
 | emaill     | string  | null: false|
 | password   | string  | null: false|
-| birth_year | integer | null: false|
-| birth_month| integer | null: false|
-| birth_day  | integer | null: false|
+| birth_day  | datetime| null: false|
 
 ### Association
 
@@ -52,13 +50,10 @@ belongs_to :dealings
 | city         | string     | null: false |
 | address      | string     | null: false |
 | phone_number | string     | null: false |
-| user         | references | null: false  foreign_key: true|
-| item         | references | null: false  foreign_key: true|
+| dealing | references | null: false foreign_key: true|
 
 ### Association
-belongs_to :user
-belongs_to :items
-belongs_to :dealings
+belongs_to :dealing
 
 ## commentsテーブル（商品へのコメント）
 
@@ -82,4 +77,4 @@ has_one :user
 ### Association
 belongs_to :user
 belongs_to :item
-has_one    :assresses
+has_one    :assresse
