@@ -17,7 +17,6 @@
 
 has_many :items 
 has_many :comments
-has_many :addresses
 has_many :dealings
 
 ## itemsテーブル
@@ -36,19 +35,19 @@ has_many :dealings
 
 ### Association
 
-has_one :addresses
 has_many :comments
-belonge_to :users
-belongs_to :dealings
+belonge_to :user
+belongs_to :dealing
 
 ## addressesテーブル(購入する際に獲得するデータ)
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
-| postal       | integer    | null: false |
+| postal       | string    | null: false |
 | prefecture   | integer    | null: false |
 | city         | string     | null: false |
 | address      | string     | null: false |
+| building_name| string     | null: false |
 | phone_number | string     | null: false |
 | dealing      | references | null: false foreign_key: true|
 
@@ -77,4 +76,4 @@ has_one :user
 ### Association
 belongs_to :user
 belongs_to :item
-has_one    :assresse
+has_one    :addresse
