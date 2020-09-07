@@ -1,20 +1,25 @@
 # テーブル設計
 
 ## usersテーブル
-| Column    | Type    | Option     |
-|-----------|---------|------------|
-| name      | string  | null: false|
-| first_name| string  | null: false|
-| last_neme | string  | null: false|
-| emaill    | string  | null: false|
-| password  | string  | null: false|
-| birth_day | integer | null: false|
+##　大文字はカナ表記
+| Column     | Type    | Option     |
+|------------|---------|------------|
+| name       | string  | null: false|
+| first_name | string  | null: false|
+| First_name | string  | null: false|
+| last_neme  | string  | null: false|
+| Last_neme  | string  | null: false|
+| emaill     | string  | null: false|
+| password   | string  | null: false|
+| birth_year | integer | null: false|
+| birth_month| integer | null: false|
+| birth_day  | integer | null: false|
 
 ### Association
 
 has_many :items 
 has_many :comments
-has_many :purchases
+has_many :addresses
 has_many :dealings
 
 ## itemsテーブル
@@ -22,26 +27,28 @@ has_many :dealings
 | ------------| --------- | ----------- |
 | name        | string    | null: false |
 | description | text      | null: false |
+| category    | integer   | null: false |
+| condition   | integer   | null: false |
+| delivery_fee| integer   | null: false |
+| area        | integer   | null: false |
+| day         | integer   | null: false |
 | price       | integer   | null: false |
 | user        | references| null: false  foreign_key: true|
 
 
 ### Association
 
-has_one :purchases
+has_one :addresses
 has_many :comments
 belonge_to :users
 belongs_to :dealings
 
-## purchaseテーブル(購入する際に獲得するデータ)
+## addressesテーブル(購入する際に獲得するデータ)
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
-| card_number  | integer    | null: false |
-| deadline     | integer    | null: false |
-| security     | integer    | null: false |
 | postal       | integer    | null: false |
-| prefecture   | string     | null: false |
+| prefecture   | integer    | null: false |
 | city         | string     | null: false |
 | address      | string     | null: false |
 | phone_number | string     | null: false |
@@ -49,8 +56,9 @@ belongs_to :dealings
 | item         | references | null: false  foreign_key: true|
 
 ### Association
-belongs_to :users
-belongs_to :items 
+belongs_to :user
+belongs_to :items
+belongs_to :dealings
 
 ## commentsテーブル（商品へのコメント）
 
@@ -63,7 +71,7 @@ belongs_to :items
 ### Association
 
 has_one :items
-has_one :users
+has_one :user
 
  ## dealingsテーブル
 | Column  | Type       | Options                        |
@@ -72,5 +80,6 @@ has_one :users
 | item    | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :users
-belongs_to :items
+belongs_to :user
+belongs_to :item
+has_one    :assresses
