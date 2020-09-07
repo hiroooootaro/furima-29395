@@ -4,7 +4,7 @@
 
 | Column     | Type    | Option     |
 |------------|---------|------------|
-| name       | string  | null: false|
+| nickname   | string  | null: false|
 | first_name | string  | null: false|
 | first_name | string  | null: false|
 | last_neme  | string  | null: false|
