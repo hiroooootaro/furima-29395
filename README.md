@@ -11,7 +11,7 @@
 | Last_neme  | string  | null: false|
 | emaill     | string  | null: false|
 | password   | string  | null: false|
-| birth_day  | datetime| null: false|
+| birth_day  | date    | null: false|
 
 ### Association
 
@@ -37,7 +37,7 @@ has_many :dealings
 
 has_many :comments
 belonge_to :user
-belongs_to :dealing
+has_one :dealing
 
 ## addressesテーブル(購入する際に獲得するデータ)
 
@@ -47,7 +47,7 @@ belongs_to :dealing
 | prefecture   | integer    | null: false |
 | city         | string     | null: false |
 | address      | string     | null: false |
-| building_name| string     | null: false |
+| building_name| string     |             |
 | phone_number | string     | null: false |
 | dealing      | references | null: false foreign_key: true|
 
