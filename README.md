@@ -50,7 +50,7 @@ belongs_to :dealings
 | city         | string     | null: false |
 | address      | string     | null: false |
 | phone_number | string     | null: false |
-| dealing | references | null: false foreign_key: true|
+| dealing      | references | null: false foreign_key: true|
 
 ### Association
 belongs_to :dealing
