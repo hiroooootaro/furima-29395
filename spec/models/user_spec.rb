@@ -6,19 +6,20 @@ RSpec.describe User, type: :model do
   end
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
+      it "passwordが半角英数字の混合であること" do
+        @user.password = "000abc"
+        @user.password_confirmation = "000abc"
+        expect(@user).to be_valid
+      end
+    end
+    context '新規登録がうまくいかないとき' do
       it "emailが一意的であること" do
         @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include ("Last name is invalid")
+        expect(another_user.errors.full_messages).to include ("Email has already been taken")
       end
-      it "passwordが半角英数字の混合であること" do
-        @user.password = "000abc"
-        @user.valid?
-      end
-    end
-    context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
         @user.nickname = ""
         @user.valid?
@@ -71,9 +72,11 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it "passwordとpassword_confirmationが一致しないと登録できない" do
-        @user.password != @user.password_confirmation
+        @user.password = "aaa123"
+        @user.password_confirmation = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        binding.pry
+        expect(@user.errors.full_messages).to include("doesn't match Password")
       end
       it "first_nameが全角（漢字、平仮名、カタカナ）以外だと登録できない" do
         @user.first_name = "a"
