@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    #@item = Article.order("created_at DESC")
+    @item = Item.order("created_at DESC")
+    @items = Item.find(params[:id])
   end
 
   def new
@@ -8,7 +9,6 @@ class ItemsController < ApplicationController
   end
 
   def create 
-    #binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+  
 
   private
 
