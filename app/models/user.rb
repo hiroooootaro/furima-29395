@@ -17,4 +17,7 @@ class User < ApplicationRecord
         validates :birth_day, presence: true
         validates :password, presence: true
       end
+
+    
+  has_many :items
 end
