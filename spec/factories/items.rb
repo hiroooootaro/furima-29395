@@ -8,7 +8,8 @@ FactoryBot.define do
     condition_id          {Faker::Number.between(from: 2, to: 6) }
     delivery_fee_id       {Faker::Number.between(from: 2, to: 3) }
     day_id                {Faker::Number.between(from: 2, to: 4) }
-
+    
+    association :user, factory: :user    
 
 
 
