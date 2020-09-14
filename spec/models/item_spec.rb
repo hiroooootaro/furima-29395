@@ -8,9 +8,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe '' do
-    it 'ログインしてるユーザーだけが出品ページに遷移できる' do
-
-    end
     it '画像がないと登録できない' do
       @item.item_image = ""
       @item.valid?
