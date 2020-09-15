@@ -67,7 +67,7 @@ belongs_to :dealing
 has_one :items
 has_one :user
 
- ## dealingsテーブル
+ ## ordersテーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
