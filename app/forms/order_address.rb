@@ -12,9 +12,8 @@ class OrderAddress
     validates :token
   end
   def save
-    order = order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(postal: postal, prefecture_id: prefecture_id, city: city,address: address, building_name: building_name,phone_number: phone_number,order_id: order.id)
-
   end
 
 end
