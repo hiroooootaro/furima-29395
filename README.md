@@ -17,7 +17,7 @@
 
 has_many :items 
 has_many :comments
-has_many :dealings
+has_many :orders
 
 ## itemsテーブル
 | Column         | Type      | Options     |
@@ -37,7 +37,7 @@ has_many :dealings
 
 has_many :comments
 belonge_to :user
-has_one :dealing
+has_one :orders
 
 ## addressesテーブル(購入する際に獲得するデータ)
 
@@ -49,10 +49,10 @@ has_one :dealing
 | address       | string     | null: false |
 | building_name | string     |             |
 | phone_number  | string     | null: false |
-| dealing       | references | null: false foreign_key: true|
+| order         | references | null: false foreign_key: true|
 
 ### Association
-belongs_to :dealing
+belongs_to :order
 
 ## commentsテーブル（商品へのコメント）
 
