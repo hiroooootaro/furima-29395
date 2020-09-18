@@ -5,10 +5,10 @@ class OrderAddress
 
   with_options presence: true do
     validates :phone_number, format: {with:/\A\d{,11}\z/}
-    validates :address, format: {/\A[ぁ-んァ-ン一-龥]/}
+    validates :address, format: {with:/\A[ぁ-んァ-ン一-龥]/}
     validates :postal, format: { with:/\A\d{3}[-]\d{4}\z/}
     validates :prefecture_id, numericality: {other_than: 0, message: 'Select'}
-    validates :city
+    validates :city, format: {with:/\A[ぁ-んァ-ン一-龥]/}
     validates :user_id
     validates :item_id
   end
